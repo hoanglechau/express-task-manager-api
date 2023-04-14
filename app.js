@@ -1,4 +1,3 @@
-// Description: Entry point of the application
 const express = require("express");
 
 // create express app
@@ -6,6 +5,9 @@ const app = express();
 
 // import routes
 const tasks = require("./routes/tasks");
+
+// connect to database
+const connectDB = require("./db/connect");
 
 // middleware
 app.use(express.json());
@@ -20,4 +22,13 @@ app.use("/api/v1/tasks", tasks);
 
 const port = 3000;
 // start server
-app.listen(port, console.log(`Server is listening on port ${port}...`));
+const start = async () => {
+  try {
+    await connectDB();
+    app.listen(port, console.log(`Server is listening on port ${port}...`));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+start();
