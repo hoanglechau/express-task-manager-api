@@ -4,21 +4,12 @@
         "commonjs": true,
         "es2021": true
     },
-    "extends": "airbnb-base",
-    "overrides": [],
+    "extends": "eslint:recommended",
+    "overrides": [
+    ],
     "parserOptions": {
         "ecmaVersion": "latest"
     },
     "rules": {
-        "eqeqeq": "error",
-        "no-console": "warn",
-        "quotes": [
-            "error",
-            "double",
-            {
-                "avoidEscape": true
-            }
-        ],
-        "comma-dangle": "off"
     }
 }
