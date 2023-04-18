@@ -10,11 +10,8 @@ const tasks = require("./routes/tasks");
 // connect to database
 const connectDB = require("./db/connect");
 // middleware
+app.use(express.static("./public")); // to run the static frontend website
 app.use(express.json());
-// routes
-app.get("/hello", (req, res) => {
-  res.send("Task Manager App");
-});
 
 // use routes
 app.use("/api/v1/tasks", tasks);

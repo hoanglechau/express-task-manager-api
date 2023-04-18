@@ -60,6 +60,31 @@ const updateTask = async (req, res) => {
   }
 };
 
+// Quite similar to update task, used to check the functionality of PUT
+/*
+const editTask = async (req, res) => {
+  try {
+    // get the id from the request's parameters
+    const { id: taskID } = req.params;
+    // Include the options to return new values and run validators for the request's parameters
+    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
+      new: true,
+      runValidators: true,
+      overwrite: true
+    });
+
+    // Check whether the task exists or not
+    if (!task) {
+      return res.status(404).json({ msg: `No task with id: ${taskID}` });
+    }
+    res.status(200).json({ task });
+  } catch (error) {
+    // This is in case the syntax for the id is wrong
+    res.status(500).json({ msg: error });
+  }
+};
+*/
+
 // Delete a single task
 const deleteTask = async (req, res) => {
   try {
@@ -83,4 +108,5 @@ module.exports = {
   getTask,
   updateTask,
   deleteTask
+  //editTask
 };
