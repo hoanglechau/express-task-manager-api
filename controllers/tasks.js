@@ -41,8 +41,13 @@ const getTask = async (req, res) => {
 // Update a single task
 const updateTask = async (req, res) => {
   try {
+    // get the id from the request's parameters
     const { id: taskID } = req.params;
-    const task = await Task.findOneAndUpdate({ _id: taskID });
+    // Include the options to return new values and run validators for the request's parameters
+    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
+      new: true,
+      runValidators: true
+    });
 
     // Check whether the task exists or not
     if (!task) {
